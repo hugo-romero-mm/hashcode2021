@@ -16,9 +16,7 @@ class IntersectionSchedule:
     schedules: list[StreetSchedule]
 
 
-
-
-def read(index = 0):
+def read(index = 0) -> list[IntersectionSchedule]:
     file_path = f"./{output_path}/{files[index]}"
     schedules = []
     with open(file_path, 'r') as file:
@@ -31,7 +29,7 @@ def read(index = 0):
             for i in range(num_scheduled):
                 schedule_line = lines.pop(0)
                 street, period = schedule_line.split()
-                intersection_schedule.schedules.append((street, int(period)))
+                intersection_schedule.schedules.append(StreetSchedule(street, int(period)))
             schedules.append(intersection_schedule)
 
     return schedules
